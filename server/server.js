@@ -6,7 +6,7 @@ import userRoutes from './routes/userRoutes.js';
 import postRoutes from './routes/postRoutes.js';
 import replyRoutes from './routes/replyRoutes.js';
 import {v2 as cloudinary} from 'cloudinary';
-import cors from 'cors';
+
 dotenv.config();
 connectDB();
 const app = express();
@@ -21,11 +21,7 @@ cloudinary.config({
 app.use(express.json({limit:"50mb"}));
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
-app.use(
-    cors({
-        origin:["https://localhost:3000", "https://merntask.com"],
-    }
-)
+
 
 app.use("/api/users",userRoutes);
 app.use("/api/posts",postRoutes);
